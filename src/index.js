@@ -1,15 +1,17 @@
-const express = require('express');
-const cors = require('cors');
-const taskRoute = require('../Routes/taskRoute.js');
+const express = require("express");
+const cors = require("cors");
+const taskRoute = require("../Routes/taskRoute.js");
 const app = express();
-const connectDB = require('../db/index.js');
+const connectDB = require("../db/index.js");
 
-app.use(cors({
-  origin: 'https://task-managment-b4ed3.web.app/' 
-}));
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(express.json());
 
-app.use('/api/tasks', taskRoute);
+app.use("/api/tasks", taskRoute);
 
 connectDB()
   .then(() => {
@@ -18,5 +20,5 @@ connectDB()
     });
   })
   .catch((err) => {
-    console.log('MONGO db connection failed !!! ', err);
+    console.log("MONGO db connection failed !!! ", err);
   });
