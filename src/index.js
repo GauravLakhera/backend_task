@@ -4,7 +4,9 @@ const taskRoute = require('../Routes/taskRoute.js');
 const app = express();
 const connectDB = require('../db/index.js');
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://task-managment-b4ed3.web.app/' 
+}));
 app.use(express.json());
 
 app.use('/api/tasks', taskRoute);
